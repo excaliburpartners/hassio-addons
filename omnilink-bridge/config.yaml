@@ -1,0 +1,107 @@
+---
+name: OmniLink Bridge
+version: 1.1.14
+slug: omnilink-bridge
+description: MQTT bridge, web service API, time sync, and logging for HAI/Leviton OmniPro II controllers
+url: https://github.com/excaliburpartners/OmniLinkBridge
+arch:
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+startup: services
+boot: auto
+init: false
+options:
+  controller_address: ''
+  controller_port: 4369
+  controller_key1: ''
+  controller_key2: ''
+  controller_name: OmniLinkBridge
+  time_sync: false
+  time_interval: 60
+  time_drift: 10
+  verbose_unhandled: true
+  verbose_event: true
+  verbose_area: true
+  verbose_zone: true
+  verbose_thermostat_timer: true
+  verbose_thermostat: true
+  verbose_unit: true
+  verbose_message: true
+  webapi_enabled: false
+  webapi_port: 8000
+  mqtt_enabled: false
+  mqtt_server: ''
+  mqtt_port: 1883
+  mqtt_username: ''
+  mqtt_password: ''
+  mqtt_prefix: omnilink
+  mqtt_discovery_prefix: homeassistant
+  mqtt_discovery_name_prefix: ''
+  mqtt_discovery_ignore_zones: ''
+  mqtt_discovery_ignore_units: ''
+  mqtt_discovery_area_code_required: ''
+  mqtt_discovery_override_zone: ''
+  mqtt_discovery_override_unit: ''
+  notify_area: false
+  notify_message: false
+  mail_server: ''
+  mail_tls: false
+  mail_port: 25
+  mail_username: ''
+  mail_password: ''
+  mail_from: ''
+  mail_to: ''
+  prowl_key: ''
+  pushover_token: ''
+  pushover_user: ''
+schema:
+  controller_address: str
+  controller_port: port?
+  controller_key1: str
+  controller_key2: str
+  controller_name: str?
+  time_sync: bool?
+  time_interval: int?
+  time_drift: int?
+  verbose_unhandled: bool?
+  verbose_event: bool?
+  verbose_area: bool?
+  verbose_zone: bool?
+  verbose_thermostat_timer: bool?
+  verbose_thermostat: bool?
+  verbose_unit: bool?
+  verbose_message: bool?
+  webapi_enabled: bool?
+  webapi_port: int?
+  webapi_override_zone: str?
+  mqtt_enabled: bool?
+  mqtt_server: str?
+  mqtt_port: port?
+  mqtt_username: str?
+  mqtt_password: str?
+  mqtt_prefix: str?
+  mqtt_discovery_prefix: str?
+  mqtt_discovery_name_prefix: str?
+  mqtt_discovery_ignore_zones: str?
+  mqtt_discovery_ignore_units: str?
+  mqtt_discovery_area_code_required: str?
+  mqtt_discovery_override_zone: str?
+  mqtt_discovery_override_unit: str?
+  notify_area: bool?
+  notify_message: bool?
+  mail_server: str?
+  mail_tls: bool?
+  mail_port: int?
+  mail_username: str?
+  mail_password: str?
+  mail_from: str?
+  mail_to: str?
+  prowl_key: str?
+  pushover_token: str?
+  pushover_user: str?
+ports:
+  8000/tcp: 8000
+map:
+  - config:rw
