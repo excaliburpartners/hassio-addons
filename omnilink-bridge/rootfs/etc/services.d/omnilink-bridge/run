@@ -1,0 +1,13 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Example
+# Runs example1 script
+# ==============================================================================
+
+bashio::log.info "Starting OmniLink Bridge..."
+
+CONFIG_PATH=/data/options.json
+
+jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' $CONFIG_PATH > /app/OmniLinkBridge.ini
+
+mono /app/OmniLinkBridge.exe -i -c /app/OmniLinkBridge.ini

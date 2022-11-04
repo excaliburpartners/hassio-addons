@@ -5,7 +5,10 @@ RUN apt-get update && \
   apt-get install -y git
 
 ARG BUILD_VERSION
-RUN git clone --depth 1 -b $BUILD_VERSION https://github.com/excaliburpartners/OmniLinkBridge.git /build
+RUN major=`echo $BUILD_VERSION | cut -d. -f1` \
+    && minor=`echo $BUILD_VERSION | cut -d. -f2` \
+    && revision=`echo $BUILD_VERSION | cut -d. -f3` \
+    && git clone --depth 1 -b $major.$minor.$revision https://github.com/excaliburpartners/OmniLinkBridge.git /build
 
 WORKDIR /build
 
@@ -14,6 +17,9 @@ RUN msbuild /build/OmniLinkBridge.sln /t:Build /p:Configuration=Release
 RUN mv /build/OmniLinkBridge/bin/Release /app
 
 FROM $BUILD_FROM AS runtime
+
+# Copy root filesystem
+COPY rootfs /
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends gnupg dirmngr ca-certificates \
@@ -35,5 +41,3 @@ WORKDIR /app
 
 COPY --from=build /app/OmniLinkBridge.ini /config/OmniLinkBridge.ini
 COPY --from=build /app .
-COPY data/run.sh /
-CMD [ "/run.sh" ]
