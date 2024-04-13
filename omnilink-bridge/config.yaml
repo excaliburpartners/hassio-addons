@@ -1,6 +1,6 @@
 ---
 name: OmniLink Bridge
-version: 1.1.14.1
+version: 1.1.15.1
 slug: omnilink-bridge
 description: MQTT bridge, web service API, time sync, and logging for HAI/Leviton OmniPro II controllers
 url: https://github.com/excaliburpartners/OmniLinkBridge
@@ -29,6 +29,7 @@ options:
   verbose_thermostat: true
   verbose_unit: true
   verbose_message: true
+  verbose_lock: true
   webapi_enabled: false
   webapi_port: 8000
   mqtt_enabled: false
@@ -73,6 +74,7 @@ schema:
   verbose_thermostat: bool?
   verbose_unit: bool?
   verbose_message: bool?
+  verbose_lock: bool?
   webapi_enabled: bool?
   webapi_port: int?
   webapi_override_zone: str?
