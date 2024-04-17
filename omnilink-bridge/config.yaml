@@ -1,6 +1,6 @@
 ---
 name: OmniLink Bridge
-version: 1.1.15.1
+version: 1.1.15.2
 slug: omnilink-bridge
 description: MQTT bridge, web service API, time sync, and logging for HAI/Leviton OmniPro II controllers
 url: https://github.com/excaliburpartners/OmniLinkBridge
@@ -21,17 +21,6 @@ options:
   time_sync: false
   time_interval: 60
   time_drift: 10
-  verbose_unhandled: true
-  verbose_event: true
-  verbose_area: true
-  verbose_zone: true
-  verbose_thermostat_timer: true
-  verbose_thermostat: true
-  verbose_unit: true
-  verbose_message: true
-  verbose_lock: true
-  webapi_enabled: false
-  webapi_port: 8000
   mqtt_enabled: false
   mqtt_server: ''
   mqtt_port: 1883
@@ -45,6 +34,17 @@ options:
   mqtt_discovery_area_code_required: ''
   mqtt_discovery_override_zone: ''
   mqtt_discovery_override_unit: ''
+  webapi_enabled: false
+  webapi_port: 8000
+  verbose_unhandled: true
+  verbose_event: true
+  verbose_area: true
+  verbose_zone: true
+  verbose_thermostat_timer: true
+  verbose_thermostat: true
+  verbose_unit: true
+  verbose_message: true
+  verbose_lock: true
   notify_area: false
   notify_message: false
   mail_server: ''
@@ -66,18 +66,6 @@ schema:
   time_sync: bool?
   time_interval: int?
   time_drift: int?
-  verbose_unhandled: bool?
-  verbose_event: bool?
-  verbose_area: bool?
-  verbose_zone: bool?
-  verbose_thermostat_timer: bool?
-  verbose_thermostat: bool?
-  verbose_unit: bool?
-  verbose_message: bool?
-  verbose_lock: bool?
-  webapi_enabled: bool?
-  webapi_port: int?
-  webapi_override_zone: str?
   mqtt_enabled: bool?
   mqtt_server: str?
   mqtt_port: port?
@@ -91,6 +79,18 @@ schema:
   mqtt_discovery_area_code_required: str?
   mqtt_discovery_override_zone: str?
   mqtt_discovery_override_unit: str?
+  webapi_enabled: bool?
+  webapi_port: int?
+  webapi_override_zone: str?
+  verbose_unhandled: bool?
+  verbose_event: bool?
+  verbose_area: bool?
+  verbose_zone: bool?
+  verbose_thermostat_timer: bool?
+  verbose_thermostat: bool?
+  verbose_unit: bool?
+  verbose_message: bool?
+  verbose_lock: bool?
   notify_area: bool?
   notify_message: bool?
   mail_server: str?
