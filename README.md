@@ -1,4 +1,4 @@
-# Hass.io Add-ons
+# Home Assistant Add-ons
 
 ## Available Add-ons
 |Add-on|Description|
@@ -7,9 +7,18 @@
 
 ## Installation
 
-1. In Home Assistant open the "Hass.io" menu
-2. Click "ADD-ON STORE"
-3. Enter the below URL in "Add new repository by URL" and click Add
+[![Add repository on my Home Assistant][repository-badge]][repository-url]
+
+If you want to do add the repository manually:
+1. In Home Assistant, navigate to Settings > Add-ons and click "Add-on Store"
+2. Click the three dots in the upper right > Repositories
+3. Enter the below URL and click Add
 ```
 https://github.com/excaliburpartners/hassio-addons
 ```
+
+[repository-badge]: https://img.shields.io/badge/Add%20repository%20to%20my-Home%20Assistant-41BDF5?logo=home-assistant&style=for-the-badge
+[repository-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https://github.com/excaliburpartners/hassio-addons
+
+[repository-badge]: https://img.shields.io/badge/Add%20repository%20to%20my-Home%20Assistant-41BDF5?logo=home-assistant&style=for-the-badge
+[repository-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fexcaliburpartners%2Fhassio-addons

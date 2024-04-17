@@ -5,7 +5,7 @@
 
 ### HAI / Leviton Omni Controller
 - `controller_address` hostname or IP address
-- `controller_port` defaults to 4369
+- `controller_port` defaults to `4369`
 - `controller_key1`
 - `controller_key2`
 - `controller_name` defaults to `OmniLinkBridge`, used in notifications
