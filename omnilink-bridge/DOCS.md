@@ -37,13 +37,7 @@ Can be used for integration with Home Assistant. If you have multiple Omni Contr
   - multiple entries must be separated with a comma
   - `device_class` must be `battery`, `cold`, `door`, `garage_door`, `gas`, `heat`, `moisture`, `motion`, `problem`, `safety`, `smoke`, or `window`
 - `mqtt_discovery_override_unit`
-  - formatted as `id=1;type=switch`
-  - multiple entries must be separated with a comma
-  - `type` must be
-    - units (LTe 1-32, IIe 1-64, Pro 1-256) `light` or `switch`, defaults to `light`
-    - flags (LTe 41-88, IIe 73-128, Pro 393-511) `switch` or `number`, defaults to `switch`
-- `mqtt_discovery_override_unit`
-  - formatted as `id=395;type=number`
+  - formatted as `id=1;type=switch,id=395;type=number`
   - multiple entries must be separated with a comma
   - `type` must be
     - units (LTe 1-32, IIe 1-64, Pro 1-256) `light` or `switch`, defaults to `light`
