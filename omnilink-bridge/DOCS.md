@@ -42,6 +42,11 @@ Can be used for integration with Home Assistant. If you have multiple Omni Contr
   - `type` must be
     - units (LTe 1-32, IIe 1-64, Pro 1-256) `light` or `switch`, defaults to `light`
     - flags (LTe 41-88, IIe 73-128, Pro 393-511) `switch` or `number`, defaults to `switch`
+- `mqtt_discovery_button_type`
+  - publish buttons as this Home Assistant device type
+  - must be `button` or `switch` (previous behavior)
+- `mqtt_audio_local_mute`
+  - handle mute locally by setting volume to 0 and restoring to previous value
 
 ### Web Service
 Can be used for integration with Samsung SmartThings.
@@ -62,6 +67,7 @@ Can be used for integration with Samsung SmartThings.
 - `verbose_unit` enable unit logging
 - `verbose_message` enable console message logging
 - `verbose_lock` enable lock logging
+- `verbose_audio` enable audio logging
 
 ### Notifications
 - `notify_area` enable for area status changes
