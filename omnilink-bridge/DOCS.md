@@ -44,9 +44,12 @@ Can be used for integration with Home Assistant. If you have multiple Omni Contr
     - flags (LTe 41-88, IIe 73-128, Pro 393-511) `switch` or `number`, defaults to `switch`
 - `mqtt_discovery_button_type`
   - publish buttons as this Home Assistant device type
-  - must be `button` or `switch` (previous behavior)
+  - must be `button` (recommended) or `switch` (default, previous behavior)
 - `mqtt_audio_local_mute`
   - handle mute locally by setting volume to 0 and restoring to previous value
+- `mqtt_audio_volume_media_player`
+  - change audio volume scaling for Home Assistant media player
+  - `true` 0.00-1.00, `false` 0-100 (default, previous behavior)
 
 ### Web Service
 Can be used for integration with Samsung SmartThings.
@@ -94,3 +97,56 @@ Register for API token at http://www.pushover.net
 - `pushover_token`
 - `pushover_user`
   - multiple entries must be separated with a comma
+
+### Universal Media Player
+The [Universal media player](https://www.home-assistant.io/integrations/universal/) can be linked to an audio zone by adding the below to the Home Assistant config. This requires `mqtt_audio_volume_media_player: true`. Substitute `omnilink_AUDIOZONE` with the name of the audio zone entities.
+
+```
+media_player:
+  platform: universal
+  name: Audio Zone
+  commands:
+    turn_on:
+      service: switch.turn_on
+      target:
+        entity_id: switch.omnilink_AUDIOZONE
+    turn_off:
+      service: switch.turn_off
+      target:
+        entity_id: switch.omnilink_AUDIOZONE
+    volume_up:
+      service: number.set_value
+      target:
+        entity_id: number.omnilink_AUDIOZONE_volume
+      data:
+        value: "{{ states('number.omnilink_AUDIOZONE_volume') | float + 0.01 }}"
+    volume_down:
+      service: number.set_value
+      target:
+        entity_id: number.omnilink_AUDIOZONE_volume
+      data:
+        value: "{{ states('number.omnilink_AUDIOZONE_volume') | float - 0.01 }}"
+    volume_mute:
+      service: switch.toggle
+      target:
+        entity_id: switch.omnilink_AUDIOZONE_mute
+    select_source:
+      service: select.select_option
+      target:
+        entity_id: select.omnilink_AUDIOZONE_source
+      data:
+        option: "{{ source }}"
+    volume_set:
+      service: number.set_value
+      target:
+        entity_id: number.omnilink_AUDIOZONE_volume
+      data:
+        value: "{{ volume_level }}"
+
+  attributes:
+    state: switch.omnilink_AUDIOZONE
+    is_volume_muted: switch.omnilink_AUDIOZONE_mute
+    volume_level: number.omnilink_AUDIOZONE_volume
+    source: select.omnilink_AUDIOZONE_source
+    source_list: select.omnilink_AUDIOZONE_source|options
+```
