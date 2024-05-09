@@ -97,6 +97,10 @@ Register for API token at http://www.pushover.net
 - `pushover_token`
 - `pushover_user`
   - multiple entries must be separated with a comma
+  
+### Support
+- `support_send_logs_to_developer`
+  - sends logs to developer ONLY USE WHEN ASKED
 
 ### Universal Media Player
 The [Universal media player](https://www.home-assistant.io/integrations/universal/) can be linked to an audio zone by adding the below to the Home Assistant config. This requires `mqtt_audio_volume_media_player: true`. Substitute `omnilink_AUDIOZONE` with the name of the audio zone entities.
