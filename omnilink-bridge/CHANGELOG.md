@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.19.1
+- Fix MQTT alarm control panel for Home Assistant 2024.6
+
 ## 1.1.18.1
 - Increase timeout for loading names and add send support logs
 

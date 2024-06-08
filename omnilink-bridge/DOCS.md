@@ -29,14 +29,25 @@ Can be used for integration with Home Assistant. If you have multiple Omni Contr
   - skip publishing Home Assistant discovery topics for zones/units
 - `mqtt_discovery_ignore_units` range of numbers `1,2,3,5-10`
   - skip publishing Home Assistant discovery topics for zones/units
-- `mqtt_discovery_area_code_required`  range of numbers `1,2,3,5-10`
-  - require Home Assistant to prompt for user code when arming/disarming area
+- `mqtt_discovery_override_area`
+  - override the area Home Assistant alarm control panel
+  - formatted as `id=1;code_disarm=true;arm_vacation=false`
+  - multiple entries must be separated with a comma
+  - prompt for user code
+    - `code_arm`: `true` or `false`, defaults to `false`
+    - `code_disarm`: `true` or `false`, defaults to `false`
+  - show these modes
+    - `arm_home`: `true` or `false`, defaults to `true`
+    - `arm_away`: `true` or `false`, defaults to `true`
+    - `arm_night`: `true` or `false`, defaults to `true`
+    - `arm_vacation`: `true` or `false`, defaults to `true`
 - `mqtt_discovery_override_zone`
   - override the zone Home Assistant binary sensor device_class
   - formatted as `id=5;device_class=garage_door`
   - multiple entries must be separated with a comma
   - `device_class` must be `battery`, `cold`, `door`, `garage_door`, `gas`, `heat`, `moisture`, `motion`, `problem`, `safety`, `smoke`, or `window`
 - `mqtt_discovery_override_unit`
+  - override the unit Home Assistant device type
   - formatted as `id=1;type=switch,id=395;type=number`
   - multiple entries must be separated with a comma
   - `type` must be

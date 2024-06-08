@@ -1,6 +1,6 @@
 ---
 name: OmniLink Bridge
-version: 1.1.18.1
+version: 1.1.19.1
 slug: omnilink-bridge
 description: MQTT bridge, web service API, time sync, and logging for HAI/Leviton OmniPro II controllers
 url: https://github.com/excaliburpartners/OmniLinkBridge
@@ -31,7 +31,7 @@ options:
   mqtt_discovery_name_prefix: ''
   mqtt_discovery_ignore_zones: ''
   mqtt_discovery_ignore_units: ''
-  mqtt_discovery_area_code_required: ''
+  mqtt_discovery_override_area: ''
   mqtt_discovery_override_zone: ''
   mqtt_discovery_override_unit: ''
   mqtt_discovery_button_type: 'switch'
@@ -81,7 +81,7 @@ schema:
   mqtt_discovery_name_prefix: str?
   mqtt_discovery_ignore_zones: str?
   mqtt_discovery_ignore_units: str?
-  mqtt_discovery_area_code_required: str?
+  mqtt_discovery_override_area: str?
   mqtt_discovery_override_zone: str?
   mqtt_discovery_override_unit: str?
   mqtt_discovery_button_type: str?
