@@ -1,4 +1,4 @@
-ARG BUILD_FROM
+ARG BUILD_FROM=homeassistant/aarch64-base-debian:bookworm
 FROM mono:latest AS build
 
 RUN apt-get update && \
