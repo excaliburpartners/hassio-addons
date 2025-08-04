@@ -1,4 +1,4 @@
-ARG BUILD_FROM=homeassistant/arm64-base-debian:bookworm
+ARG BUILD_FROM=homeassistant/aarch64-base-debian:bookworm
 # -----------------------------
 # Build Stage: Compile OmniLinkBridge
 # -----------------------------
