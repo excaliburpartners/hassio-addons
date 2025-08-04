@@ -1,3 +1,4 @@
+ARG BUILD_FROM=homeassistant/arm64-base-debian:bookworm
 # -----------------------------
 # Build Stage: Compile OmniLinkBridge
 # -----------------------------
@@ -36,7 +37,7 @@ RUN nuget restore /build/OmniLinkBridge.sln && \
 # ------------------------------------------------
 # Runtime Stage: Final Home Assistant add-on image
 # ------------------------------------------------
-ARG BUILD_FROM=homeassistant/arm64-base-debian:bookworm
+
 FROM $BUILD_FROM AS runtime
 
 # Copy root filesystem for Home Assistant add-on environment
