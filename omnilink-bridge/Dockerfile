@@ -50,7 +50,7 @@ RUN apt-get update && \
     export GNUPGHOME="$(mktemp -d)" && \
     gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
     gpg --batch --export --armor 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF > /etc/apt/trusted.gpg.d/mono.gpg.asc && \
-    echo "deb https://download.mono-project.com/repo/debian stable-bookworm main" > \
+    echo "deb https://download.mono-project.com/repo/debian stable-buster main" > \
          /etc/apt/sources.list.d/mono-official-stable.list && \
     apt-get update && \
     apt-get install -y mono-complete && \
