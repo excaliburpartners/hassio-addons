@@ -25,7 +25,7 @@ ARG BUILD_VERSION
 RUN major=`echo $BUILD_VERSION | cut -d. -f1` && \
     minor=`echo $BUILD_VERSION | cut -d. -f2` && \
     revision=`echo $BUILD_VERSION | cut -d. -f3` && \
-    git clone --depth 1 -b $major.$minor.$revision https://github.com/jmantas/OmniLinkBridge.git /build
+    git clone --depth 1 -b $major.$minor.$revision https://github.com/excaliburpartners/OmniLinkBridge.git /build
 
 WORKDIR /build
 
