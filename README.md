@@ -9,7 +9,7 @@
 
 [![Add repository on my Home Assistant][repository-badge]][repository-url]
 
-If you want to do add the repository manually:
+This is a TEMPORARY fork of this add-on, until it gets pulled back into the original add-on code hosted by @rwagoner.  To add the repository manually:
 1. In Home Assistant, navigate to Settings > Add-ons and click "Add-on Store"
 2. Click the three dots in the upper right > Repositories
 3. Enter the below URL and click Add
