@@ -1,13 +1,12 @@
-ARG BUILD_FROM=homeassistant/aarch64-base-debian:bookworm
-# -----------------------------
-# Build Stage: Compile OmniLinkBridge
-# -----------------------------
-FROM debian:bookworm-slim AS build
+ARG BUILD_FROM
+FROM debian:bookworm AS build
 
-# Install tools and mono from official repository
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        gnupg dirmngr ca-certificates apt-transport-https curl git
+RUN apt update && apt install -y dirmngr ca-certificates gnupg \
+  && gpg --homedir /tmp --no-default-keyring --keyring gnupg-ring:/usr/share/keyrings/mono-official-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
+  && chmod +r /usr/share/keyrings/mono-official-archive-keyring.gpg \
+  && echo "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/debian stable-buster main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
+  && apt update && apt install -y mono-complete nuget git \
+  && rm -rf /var/lib/apt/lists/* /tmp/*
 
 # Add Mono GPG key and repo (only stable-buster exists)
 RUN gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys \
@@ -43,23 +42,12 @@ FROM $BUILD_FROM AS runtime
 # Copy root filesystem for Home Assistant add-on environment
 COPY rootfs /
 
-# Install Mono runtime from the official repository
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gnupg dirmngr ca-certificates apt-transport-https && \
-    rm -rf /var/lib/apt/lists/* && \
-    export GNUPGHOME="$(mktemp -d)" && \
-    gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
-    gpg --batch --export --armor 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF > /etc/apt/trusted.gpg.d/mono.gpg.asc && \
-    echo "deb https://download.mono-project.com/repo/debian stable-buster main" > \
-         /etc/apt/sources.list.d/mono-official-stable.list && \
-    apt-get update && \
-    apt-get install -y mono-complete && \
-    rm -rf /var/lib/apt/lists/* /tmp/*
-
-# Cleanup GPG tools
-RUN gpgconf --kill all && \
-    rm -rf "$GNUPGHOME" && \
-    apt-get purge -y --auto-remove gnupg dirmngr
+RUN apt update && apt install -y dirmngr ca-certificates gnupg \
+  && gpg --homedir /tmp --no-default-keyring --keyring gnupg-ring:/usr/share/keyrings/mono-official-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
+  && chmod +r /usr/share/keyrings/mono-official-archive-keyring.gpg \
+  && echo "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/debian stable-buster main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
+  && apt update && apt install -y mono-complete \
+  && rm -rf /var/lib/apt/lists/* /tmp/*
 
 WORKDIR /app
 
